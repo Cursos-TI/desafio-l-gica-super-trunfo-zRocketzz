@@ -6,11 +6,11 @@
 int main() {
  //Declando as variaveis
 
-    char estado, estado2;                        // Representa o Estado, por exemplo: A, B, C, D...
+    char estado[4], estado2[4];                        // Representa o Estado, por exemplo: A, B, C, D...
     char codigo[50], codigo2[50];               // Representa o Código da carta, por exemplo: A01, B02, C03, D04...
     char cidade[50], cidade2[50];              // Para armazenar e representar o nome do Estado utilizado.
     unsigned long int populacao, populacao2;  // Número da população.
-    double area, area2;                      // Número da área por km².
+    float area, area2;                      // Número da área por km².
     double pib, pib2;                       // Referente ao número do PIB.
     int ponto, ponto2;                     // Quantos Pontos Turísticos existem nesse local.
     float densidade1, densidade2;         // Densidade Populacional.
@@ -24,7 +24,7 @@ int main() {
     //Função printf exibe na tela e scanf coleta as informações referentes a carta 02
     printf("Carta número 1: \n");
     printf("Digite uma letra de A a D: \n");
-    scanf(" %c", &estado);
+    scanf(" %s", &estado);
     getchar();                    // Limpa o Enter do buffer para evitar problemas na leitura seguinte
 
     printf("Digite o código da carta: \n");
@@ -57,7 +57,7 @@ int main() {
     getchar();
 
     printf("Digite uma letra de A a D: \n");
-    scanf("%c", &estado2);
+    scanf("%s", &estado2);
     getchar();  // Limpa o Enter do buffer para evitar problemas na leitura seguinte
 
     printf("Digite o código da carta: \n");
@@ -82,20 +82,20 @@ int main() {
     // Para calcular a Densidade Populaciona, será da seguinte forma:
     // Divida a população da cidade pela sua área.
     // O resultado será a densidade populacional, que representa o número de habitantes por quilômetro quadrado.
-    densidade1 = (float)populacao / area;  
-    densidade2 = (float)populacao2 / area2;
+    densidade1 = (float) populacao / area;  
+    densidade2 = (float) populacao2 / area2;
 
     // Como calcular o PIB per Capita:
     // Divida o PIB da cidade pela sua população.
     // O resultado será o PIB per capita, que indica a riqueza média por pessoa na cidade.
-    pibper1 = (float)pib / populacao;    
-    pibper2 = (float)pib2 / populacao2;
+    pibper1 = (float) pib / populacao;    
+    pibper2 = (float) pib2 / populacao2;
 
     /* Super Poder, calcular:
      Soma de todos os atributos numéricos: População, Área, PIB, Pontos Turísticos, PIB per Capita;
      e o inverso da densidade populacional (Quanto menor a densidade, maior o poder!). */
-    super1 = (float)populacao + area + pib + ponto + pibper1 + (1 / densidade1);
-    super2 = (float)populacao2 + area2 + pib2 + ponto2 + pibper2 + (1 / densidade2);
+    super1 = (float) populacao + area + pib + ponto + pibper1 + (1 / densidade1);
+    super2 = (float) populacao2 + area2 + pib2 + ponto2 + pibper2 + (1 / densidade2);
 
 
     //Agora finalizando, vamos fazer aparecer as duas cartas.
@@ -129,7 +129,7 @@ int main() {
     printf("Super Poder: %.2f\n", super2);
     printf("\n");
 
-    //Calculo dos rsultados das comparações entre cartas.
+    //Calculo dos resultados das comparações entre cartas.
 
     int resultado_populacao = populacao > populacao2;
     int resultado_area = area > area2;
