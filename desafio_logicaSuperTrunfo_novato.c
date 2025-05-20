@@ -149,5 +149,13 @@ int main() {
     printf("PIB per Capita: Carta %d venceu (%d)\n", resultado_pibper ? 1 : 2, resultado_pibper);
     printf("Super Poder: Carta %d venceu (%d)\n", resultado_super ? 1 : 2, resultado_super);
 
+    /*Corrigir estado para ser string.
+
+Escolher apenas um atributo numérico fixo no código para comparar.
+
+Remover ou comentar as comparações extras (superpoder e afins).
+
+Usar fgets corretamente com strcspn para limpar \n.*/
+
     return 0;
 }
