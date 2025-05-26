@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h> // Para o strcspn().
 
 // Olá, me chamo Christian Ruan! E aqui é a minha primeira atividade com o professor Sérgio Cardoso.
 // E esse é o desafio nível novato de Cartas Super Trunfo. Criando as Cartas do Super Trunfo!
@@ -21,24 +22,26 @@ int main() {
     printf("Olá, seja bem-vindo ao Desafio do Super Trunfo! \n");
     printf("Utilizaremos 2 cartas para fazer o jogo. \n");
 
-    //Função printf exibe na tela e scanf coleta as informações referentes a carta 02
+    //Função printf exibe na tela e scanf coleta as informações referentes a carta 01.
+    // Entrada da carta 1 .
     printf("Carta número 1: \n");
     printf("Digite uma letra de A a D: \n");
-    scanf(" %s", &estado);
-    getchar();                    // Limpa o Enter do buffer para evitar problemas na leitura seguinte
-
+    scanf(" %s", estado);
+    getchar(); // Limpar o Buffer.
+    
     printf("Digite o código da carta: \n");
     scanf("%s", codigo);
 
     printf("Estado: \n");
-    getchar();                   // Para limpar o buffer antes de fgets()
+    getchar();
     fgets(cidade, 50, stdin);
+    cidade[strcspn(cidade, "\n")] = '\0';
 
     printf("População: \n");
     scanf("%lu", &populacao);
 
     printf("Área: \n");
-    scanf("%lf", &area);
+    scanf("%f", &area);
 
     printf("PIB: \n");
     scanf("%lf", &pib);
@@ -51,27 +54,29 @@ int main() {
     // Após fazer a primeira pesquisa, continuaremos para a segunda pesquisa.
     // E finalizar com as duas cartas modeladas. 
 
+    // Entrada da carta 2.
     printf("Agora, vamos dar início à segunda carta.\n");
 
     printf("Carta número 2 \n"); 
     getchar();
 
     printf("Digite uma letra de A a D: \n");
-    scanf("%s", &estado2);
-    getchar();  // Limpa o Enter do buffer para evitar problemas na leitura seguinte
+    scanf("%s", estado2);
+    getchar();
 
     printf("Digite o código da carta: \n");
     scanf("%s", codigo2);
 
     printf("Estado: \n");
-    getchar();  // Para limpar o buffer antes de fgets()
+    getchar();
     fgets(cidade2, 50, stdin);
+    cidade2[strcspn(cidade2, "\n")] = '\0';
 
     printf("População: \n");
     scanf("%lu", &populacao2);
 
     printf("Digite o valor da área: \n");
-    scanf("%lf", &area2);
+    scanf("%f", &area2);
 
     printf("Digite o PIB: \n");
     scanf("%lf", &pib2);
@@ -99,33 +104,33 @@ int main() {
 
 
     //Agora finalizando, vamos fazer aparecer as duas cartas.
-    //Printf para exibir na tela todas as informações digitadas pelo usuário referente a carta 01 e 02.
 
+    // Exibição da carta 1.
     printf("Carta 1: ");
-    printf("Nome do Estado: %c\n", estado);
-    printf("Código da carta: %c%s\n", estado, codigo);
+    printf("Nome do Estado: %s\n", estado);
+    printf("Código da carta: %s%s\n", estado, codigo);
     printf("Nome da cidade: %s\n", cidade);
     printf("População: %lu\n", populacao);
-    printf("Área: %lf km²\n", area);
+    printf("Área: %.2f km²\n", area);
     printf("PIB: %.2lf bilhões\n", pib);                // Formatado para 2 casas decimais
     printf("Números de Pontos Turísticos: %d\n", ponto); 
-    printf("Densidade Populacional: %.2lf hab/km²\n", densidade1); 
-    printf("PIB per Capita: %.2lf reais\n", pibper1);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade1); 
+    printf("PIB per Capita: %.2f reais\n", pibper1);
     printf("Super Poder: %.2f\n", super1);
     printf("\n");
 
-    //Agora vamos fazer aparecer a segunda carta.
+    //Agora a exibição da carta 2.
 
     printf("Carta 2:"); 
-    printf("Nome do Estado: %c\n", estado2);
-    printf("Código da carta: %c%s\n", estado2 , codigo2);
+    printf("Nome do Estado: %s\n", estado2);
+    printf("Código da carta: %s%s\n", estado2 , codigo2);
     printf("Nome da cidade: %s\n", cidade2);
     printf("População: %lu\n", populacao2);
-    printf("Área: %lf km²\n", area2);
-    printf("PIB: %.2lf bilhões\n", pib2);                // Formatado para 2 casas decimais
+    printf("Área: %.2f km²\n", area2);
+    printf("PIB: %.2lf bilhões\n", pib2);
     printf("Números de Pontos Turísticos: %d\n", ponto2);
-    printf("Densidade Populacional: %.2lf hab/km²\n", densidade2);
-    printf("PIB per Capita: %.2lf reais\n", pibper2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+    printf("PIB per Capita: %.2f reais\n", pibper2);
     printf("Super Poder: %.2f\n", super2);
     printf("\n");
 
@@ -140,7 +145,7 @@ int main() {
     int resultado_super = super1 > super2;
 
     // Comparações entre cartas, exibindo o vencedor de cada atributo
-    printf("Comparação de Cartas:\n\n");
+    printf("\n--- Comparação de Cartas ---\n");
     printf("População: Carta %d venceu (%d)\n", resultado_populacao ? 1 : 2, resultado_populacao);
     printf("Área: Carta %d venceu (%d)\n", resultado_area ? 1 : 2, resultado_area);
     printf("PIB: Carta %d venceu (%d)\n", resultado_pib ? 1 : 2, resultado_pib);
@@ -149,13 +154,6 @@ int main() {
     printf("PIB per Capita: Carta %d venceu (%d)\n", resultado_pibper ? 1 : 2, resultado_pibper);
     printf("Super Poder: Carta %d venceu (%d)\n", resultado_super ? 1 : 2, resultado_super);
 
-    /*Corrigir estado para ser string.
-
-Escolher apenas um atributo numérico fixo no código para comparar.
-
-Remover ou comentar as comparações extras (superpoder e afins).
-
-Usar fgets corretamente com strcspn para limpar \n.*/
 
     return 0;
 }
